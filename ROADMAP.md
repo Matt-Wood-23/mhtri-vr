@@ -21,6 +21,12 @@ Honest state of the project. It's **playable end-to-end** but rough and evolving
   (a large engine change). `immersion=1` exists but is experimental/broken.
 - **Move-where-you-look:** movement is relative to your view (head + stick turn), not your body.
   This is an accepted design choice; a "body-relative" mode is possible but not implemented.
+- **Camera jumps during scripted moments** (e.g. getting hit/knocked back, certain events): the
+  game forces its own camera during these, which fights our hijack — the view snaps away and then
+  back. Planned fix: only take over the camera in the normal camera mode and let the game's
+  special/event cameras play through.
+- **Areas can load facing backwards** (or otherwise rotated) on an area transition. Workaround:
+  press **Right Ctrl** to recenter, or set `recenter_flip=1`. A proper auto-recenter on load is planned.
 - **Config path is hardcoded** to a developer path — must be made relative to the exe before wide
   distribution (see Packaging).
 - **Controller mapping is a first guess** — not yet fine-tuned; stick polarity / button roles may
