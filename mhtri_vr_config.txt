@@ -1,0 +1,24 @@
+# MH Tri VR — comfort & camera settings. Edited live (re-read ~twice a second).
+# See docs/CONFIG.md for the full reference.
+
+# --- presentation ---
+immersion=0
+quad_width=2.4
+quad_dist=1.6
+fov_scale=0.6
+depth=0.02
+convergence=20
+
+# --- first-person camera ---
+firstperson=1
+fp_follow_base=1
+eye_height=150
+eye_forward=60
+look_dist=300
+recenter_flip=0
+fp_yaw_offset=0
+
+# --- sense knobs (usually leave alone) ---
+fp_yaw_sign=0
+fp_head_yaw_sign=-1
+fp_head_pitch_sign=1

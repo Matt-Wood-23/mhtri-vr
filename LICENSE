@@ -1,0 +1,13 @@
+MH Tri VR is a fork-based project built on Dolphin Emulator and is licensed under the
+GNU General Public License, version 2 or (at your option) any later version
+(GPL-2.0-or-later), the same as Dolphin.
+
+Full corresponding source for any distributed binary is the Dolphin fork:
+  https://github.com/Matt-Wood-23/dolphin  (branch: mhtri-vr)
+
+The complete GPL-2.0 text is included in that repository (COPYING). This repository
+holds documentation and release packaging for the project.
+
+MH Tri VR is an unofficial fan project. It is not affiliated with, authorized, or
+endorsed by Nintendo, Capcom, or the Dolphin Emulator project. No game files are
+distributed; you must supply your own legally-obtained copy of Monster Hunter Tri.
