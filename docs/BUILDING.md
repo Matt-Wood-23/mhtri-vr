@@ -38,7 +38,8 @@ Controller** extension — see [INSTALL.md](INSTALL.md).)
 | Area | Files |
 |---|---|
 | OpenXR session, swapchains, frame submit, **controller input** | `Source/Core/VideoCommon/VROpenXR.{h,cpp}`, `VROpenXR_Vulkan.h` |
-| Camera injection (head-look, first-person, recenter, follow-base) | `Source/Core/Core/HW/MHTriVR.{h,cpp}` |
+| Camera injection driver (head-look, first-person, recenter, follow-base) | `Source/Core/Core/HW/MHTriVR.{h,cpp}` |
+| **Per-game profiles** (camera hook + player-state layout, keyed by Game ID) | `Source/Core/Core/HW/VRGameProfiles.h` |
 | Stereo override | `Source/Core/VideoCommon/VRStereo.{h,cpp}` |
 | Vulkan backend hooks (blit XFB → eye swapchains, single-thread submit) | `Source/Core/VideoBackends/Vulkan/VKMain.cpp`, `VulkanContext.cpp` |
 | Per-eye FOV feedback | `Source/Core/VideoCommon/VertexShaderManager.cpp` |
@@ -47,8 +48,12 @@ Controller** extension — see [INSTALL.md](INSTALL.md).)
 
 ## Architecture in one paragraph
 
-`MHTriVR` (Core) hooks the camera commit (`cam_commit_to_g3d` @ `0x802BE0F4`, RMHE08) and rewrites
-the eye/target from the HMD pose. `VROpenXR` (VideoCommon) owns the OpenXR instance, a Vulkan-shared
+`MHTriVR` (Core) hooks the camera commit and rewrites the eye/target from the HMD pose. The hook
+address and player-state offsets are **not** hard-coded — they come from a per-game **profile**
+(`VRGameProfiles.h`) selected by Game ID at boot, so the driver is multi-game. For MH Tri the hook is
+`cam_commit_to_g3d` @ `0x802BE0F4` (RMHE08). To add another title, see
+**[ADDING_A_GAME.md](ADDING_A_GAME.md)** — it's one data row, no driver changes.
+`VROpenXR` (VideoCommon) owns the OpenXR instance, a Vulkan-shared
 session, per-eye swapchains, the frame loop, and the Touch action set; the Vulkan backend blits
 Dolphin's XFB into the eye swapchains and forces single-threaded queue submission while a VR session
 is up (so Dolphin's submit thread can't race the XR compositor). Core sits above VideoCommon, so the

@@ -46,6 +46,8 @@ Full walkthrough: **[docs/INSTALL.md](docs/INSTALL.md)**.
 - **[Controls](docs/CONTROLS.md)** — Touch → Classic Controller mapping, recenter, head-look.
 - **[Config reference](docs/CONFIG.md)** — every `mhtri_vr_config.txt` setting, tuned live.
 - **[Building from source](docs/BUILDING.md)** — for developers.
+- **[Adding a game](docs/ADDING_A_GAME.md)** — the VR core is multi-game; porting a new title is one
+  profile row (camera hook + player-state offsets).
 - **[Roadmap & known issues](ROADMAP.md)** — what works, what doesn't, what's next.
 
 ## Source & license

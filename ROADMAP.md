@@ -11,6 +11,9 @@ Honest state of the project. It's **playable end-to-end** but rough and evolving
 - **Quest Touch controllers** → emulated Classic Controller (sticks + buttons).
 - Live-tunable comfort settings (no rebuild).
 - Snap-recenter (Right Ctrl).
+- **Multi-game architecture**: the VR core is game-agnostic; per-title support is a single profile
+  row (camera hook + player-state offsets) in `VRGameProfiles.h`. MH Tri is the reference profile.
+  See [docs/ADDING_A_GAME.md](docs/ADDING_A_GAME.md).
 
 ## Known issues / limitations ⚠️
 
